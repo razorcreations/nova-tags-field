@@ -27,8 +27,18 @@ export default {
 
     data() {
         return {
-            tags: this.field.value,
+            tags: [],
         };
+    },
+
+    mounted() {
+        this.field.value.forEach((value, i) => {
+            if (this.value[i].includes('amp;')) {
+                this.value[i] = this.value[i].replace('amp;', '');
+            }
+
+            this.tags.push(this.value[i]);
+        });
     },
 
     components: {
