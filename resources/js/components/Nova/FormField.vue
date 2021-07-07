@@ -1,5 +1,5 @@
 <template>
-    <default-field :field="field" :errors="errors" :show-help-text="showHelpText">
+    <default-field :field="field" :errors="errors" :show-help-text="field.helpText">
         <template slot="field">
             <component
                 :is="component"
