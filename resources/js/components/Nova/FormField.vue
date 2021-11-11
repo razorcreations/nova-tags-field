@@ -6,6 +6,7 @@
                 :name="field.attribute"
                 :type="field.type"
                 :suggestion-limit="field.suggestionLimit"
+                :select-blocks="field.selectBlocks ? field.selectBlocks : false"
                 :errors="errors"
                 v-model="tags"
             ></component>
