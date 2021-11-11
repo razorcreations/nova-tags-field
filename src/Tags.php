@@ -85,7 +85,7 @@ class Tags extends Field
     public function withSelectBlocks(array $items)
 	{
 		return $this->withMeta(['selectBlocks' => $items]);
-	}
+    }
 
 	public function doNotLimitSuggestions()
 	{
