@@ -1,3 +1,6 @@
+
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
+
 # A tags field for Nova apps
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/nova-tags-field.svg?style=flat-square)](https://packagist.org/packages/spatie/nova-tags-field)
@@ -5,8 +8,6 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/nova-tags-field.svg?style=flat-square)](https://packagist.org/packages/spatie/nova-tags-field)
 
 This package contains a Nova field to add tags to resources. Under the hood it uses the [spatie/laravel-tags](https://docs.spatie.be/laravel-tags) package.
-
-![screenshot of the tags field](https://spatie.github.io/nova-tags-field/screenshot.png)
 
 ## Support us
 
@@ -83,6 +84,14 @@ You can change the number of suggestions with `limitSuggestions()`.
 Tags::make('Tags')->limitSuggestions($maxNumberOfSuggestions),
 ```
 
+## Limiting tags
+
+By default a tags field will let you add unlimited tags. You can limit tags with `limit()`.
+
+```php
+Tags::make('Tags')->limit($maxNumberOfTags),
+```
+
 ## Using types
 
 The [underlying tags package](https://github.com/spatie/laravel-tags) has support for [tag types](https://docs.spatie.be/laravel-tags/v2/advanced-usage/using-types). To make your tags field save tags of a certain type just tack on the name of type when adding the field to your Nova resource.
@@ -122,6 +131,42 @@ public function fields(Request $request)
 ```
 
 The field will be rendered as a select form element. It will be populated by the names of the tags already saved.
+
+If you want to be able to deselect a tag, you can call the `canBeDeselected` method.
+
+```php
+// in your Nova resource
+
+public function fields(Request $request)
+{
+    return [
+        // ...
+        
+        Tags::make('Tags')->single()->canBeDeselected(),
+
+        // ...
+    ];
+}
+```
+
+## Use a different placeholder
+
+You can use the `withMeta` method [documented here](https://nova.laravel.com/docs/3.0/customization/fields.html#field-options) to change the placeholder from the default, which is `__('Add tags...')`.
+
+```php
+// in your Nova resource
+
+public function fields(Request $request)
+{
+    return [
+        // ...
+        
+        Tags::make('Categories', 'tags')->withMeta(['placeholder' => 'Add categories...']),
+
+        // ...
+    ];
+}
+```
 
 ## Working with tags
 
@@ -178,11 +223,11 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
 
 ### Security
 
-If you discover any security related issues, please email freek@spatie.be instead of using the issue tracker.
+If you've found a bug regarding security please mail [security@spatie.be](mailto:security@spatie.be) instead of using the issue tracker.
 
 ## Credits
 

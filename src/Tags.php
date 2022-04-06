@@ -52,6 +52,7 @@ class Tags extends Field
         $this->withMeta([
             'multiple' => $multiple,
             'suggestionLimit' => 5,
+            'limit' => null,
         ]);
 
         if (! $this->meta['multiple']) {
@@ -72,6 +73,17 @@ class Tags extends Field
         return $this;
     }
 
+    public function canBeDeselected()
+    {
+        if ($this->meta['multiple']) {
+            return $this;
+        }
+
+        $this->withMeta(['canBeDeselected' => true]);
+
+        return $this;
+    }
+
     public function withoutSuggestions()
     {
         return $this->limitSuggestions(0);
@@ -85,6 +97,13 @@ class Tags extends Field
     public function doNotLimitSuggestions()
     {
         return $this->limitSuggestions(9999);
+    }
+
+    public function limit(?int $limit)
+    {
+        $this->withMeta(['limit' => $limit]);
+
+        return $this;
     }
 
     protected function fillAttributeFromRequest(NovaRequest $request, $requestAttribute, $model, $attribute)
