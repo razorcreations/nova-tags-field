@@ -2,6 +2,27 @@
 
 All notable changes to `nova-tags-field` will be documented in this file
 
+## 4.0.1 - 2022-04-07
+
+## What's Changed
+
+- Dark mode support by @saundefined in https://github.com/spatie/nova-tags-field/pull/149
+- Remove unused sass
+
+## New Contributors
+
+- @saundefined made their first contribution in https://github.com/spatie/nova-tags-field/pull/149
+
+**Full Changelog**: https://github.com/spatie/nova-tags-field/compare/4.0.0...4.0.1
+
+## 4.0.0 - 2022-04-07
+
+## What's Changed
+
+- v4 by @freekmurze in https://github.com/spatie/nova-tags-field/pull/148
+
+**Full Changelog**: https://github.com/spatie/nova-tags-field/compare/3.4.5...4.0.0
+
 ## 3.4.5 - 2022-03-10
 
 ## What's Changed
